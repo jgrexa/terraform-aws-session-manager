@@ -3,7 +3,7 @@ locals {
   subnets = var.vpc_endpoints_enabled ? var.subnet_ids != [] ? var.subnet_ids : data.aws_subnets.selected[0].ids : []
 }
 
-data "aws_subnet" "selected" {
+data "aws_subnets" "selected" {
   count = var.vpc_endpoints_enabled ? 1 : 0
   filter {
     name   = "vpc-id"
